@@ -28,11 +28,9 @@ class NoteViewModel @Inject constructor(private val repository: NoteRepository):
         viewModelScope.launch(Dispatchers.IO) {
                 repository.getAllNotes().distinctUntilChanged()
                     .collect{ listOfNotes->
-                        if (listOfNotes.isNullOrEmpty()){
-                            Log.d("TAG", "Empy List")
-                        }else{
+
                             _noteList.value = listOfNotes
-                        }
+
                     }
         }
     }

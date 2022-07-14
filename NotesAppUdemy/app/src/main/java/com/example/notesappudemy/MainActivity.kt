@@ -38,10 +38,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NotesApp(noteViewModel: NoteViewModel = viewModel()){
 
-    val notesList = noteViewModel.noteList.collectAsState().value
+    val notesList = noteViewModel.noteList.collectAsState()
 
     NoteScreen(
-        notes = notesList,
+        notes = notesList.value,
         RemoveNote = {
             noteViewModel.removeNote(it)
         },
